@@ -5,7 +5,7 @@ import { Spacer } from '@nextui-org/react';
 
 export default function Header() {
   return (
-    <div className="flex">
+    <div className="w-full flex">
       <Spacer x={56} />
       <div className="w-full h-[6.875rem] flex flex-col justify-center items-center">
         <div className="w-[62.5rem] h-[4.688rem] flex justify-center items-center gap-4">

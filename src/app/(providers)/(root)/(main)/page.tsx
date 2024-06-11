@@ -5,7 +5,7 @@ import TopButton from '../_components/TopButton';
 
 export default function MainPage() {
   return (
-    <div className="h-dvh">
+    <div className="h-100vh">
       Main Page
       <TopButton />
     </div>
