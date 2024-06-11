@@ -8,11 +8,9 @@ export default function DropDownMenu() {
     <div className="w-[6rem] h-[3rem] flex flex-col justify-center items-center">
       <Dropdown>
         <DropdownTrigger>
-          <Button variant="faded" className="text-main-color font-semibold hover:bg-main-color hover:text-white">
-            Menu
-          </Button>
+          <Button variant="faded">Menu</Button>
         </DropdownTrigger>
-        <DropdownMenu aria-label="Dynamic Actions">
+        <DropdownMenu aria-label="Static Actions">
           <DropdownItem key="products" href="/products">
             Products
           </DropdownItem>
