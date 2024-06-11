@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { IoMailOpenOutline } from 'react-icons/io5';
-import { IoIosCopy } from 'react-icons/io';
 
 export default function FooterContent() {
   const myEmail = 'doroome246@gmail.com';
@@ -26,9 +25,6 @@ export default function FooterContent() {
       <div onClick={copyToClipboard} className=" p-[0.25rem] hover:cursor-pointer hover:bg-white hover:rounded-xl">
         {myEmail}
       </div>
-      {/* <div className=" pb-[0.25rem]">
-        <IoIosCopy className="size-4 hover:cursor-pointer" onClick={copyToClipboard} />
-      </div> */}
     </div>
   );
 }
