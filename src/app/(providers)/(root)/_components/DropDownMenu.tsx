@@ -8,7 +8,7 @@ export default function DropDownMenu() {
     <div className="w-[6rem] h-[3rem] flex flex-col justify-center items-center">
       <Dropdown>
         <DropdownTrigger>
-          <Button variant="faded" className="bg-white">
+          <Button variant="faded" color="primary">
             Menu
           </Button>
         </DropdownTrigger>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { IoMailOpenOutline } from 'react-icons/io5';
+import Swal from 'sweetalert2';
 
 export default function FooterContent() {
   const myEmail = 'doroome246@gmail.com';
@@ -9,7 +10,11 @@ export default function FooterContent() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(myEmail).then(
       () => {
-        alert('Email copied to clipboard');
+        Swal.fire({
+          icon: 'success',
+          title: 'Copied!',
+          text: 'Email copied to clipboard'
+        });
       },
       (err) => {
         console.error('Failed to copy email', err);
