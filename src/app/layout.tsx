@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'KoPro',
-  description: ''
+  description: 'B2B platform'
 };
 
 export type RootLayoutProps = {
