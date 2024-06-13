@@ -17,13 +17,13 @@ export default function Header() {
           <Input type="text" placeholder="Search something">
             Search Bar here
           </Input>
-          <Button color="primary" variant="ghost">
+          <Button variant="ghost" className="border-main-color">
             Search
           </Button>
         </div>
       </div>
       <div className="flex flex-col justify-start items-center p-2">
-        <p className="text-8xl text-main-color font-bold">KoPro</p>
+        <p className="text-8xl text-main-color font-bold">FromKo</p>
       </div>
     </div>
   );

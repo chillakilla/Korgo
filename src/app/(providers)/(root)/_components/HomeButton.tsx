@@ -6,7 +6,7 @@ export default function HomeButton() {
   return (
     <div>
       <Link href={'/'}>
-        <Button variant="faded" color="primary">
+        <Button variant="faded" className="border-main-color text-main-color font-bold">
           Home
         </Button>
       </Link>
