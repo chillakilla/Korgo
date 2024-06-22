@@ -17,7 +17,7 @@ export default function Header() {
           <Input type="text" placeholder="Search something">
             Search Bar here
           </Input>
-          <Button variant="ghost" className="border-main-color">
+          <Button variant="ghost" className="border-main-color text-main-color">
             Search
           </Button>
         </div>
