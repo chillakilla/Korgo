@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
-import DropDownMenu from './DropDownMenu';
+import React, { useState } from 'react';
 import HomeButton from './HomeButton';
+import Menu from './Menu';
 
 export default function MenuBar() {
   return (
@@ -10,8 +10,8 @@ export default function MenuBar() {
       <div className="ml-4 p-2">
         <HomeButton />
       </div>
-      <div className="p-1">
-        <DropDownMenu />
+      <div className="flex items-center justify-center">
+        <Menu />
       </div>
     </div>
   );
