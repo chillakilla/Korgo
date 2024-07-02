@@ -6,14 +6,14 @@ interface MenuItem {
   subItems: string[];
 }
 
-const Menu: React.FC = () => {
+const MenuButton: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const timeoutRef = useRef<number>();
 
-  const menuItems: MenuItem[] = [
-    { name: 'Electronics', subItems: ['phones', 'Computers'] },
-    { name: 'Motors', subItems: ['Car', 'Bike'] }
-  ];
+  {
+    /* Menu category */
+  }
+  const menuItems: MenuItem[] = [{ name: 'Category', subItems: ['All', 'Motors', 'Coolers'] }];
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutRef.current);
@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
   return (
     <div className="relative">
       <button
-        className="flex font-bold text-main-color items-center px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-xl"
+        className="flex items-center px-4 py-2 rounded-xl font-bold text-main-color bg-white hover:bg-gray-200 transform transition-transform duration-200 hover:scale-90"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -47,14 +47,14 @@ const Menu: React.FC = () => {
       {/* Dropdown menu Div Start */}
       <div onMouseEnter={handleSubMenuMouseEnter} onMouseLeave={handleSubMenuMouseLeave}>
         {showMenu && (
-          <div className="absolute right-0 mt-2 w-48 bg-white border shadow-lg rounded-lg">
+          <div className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg">
             <div className="py-1">
               {menuItems.map((item, index) => (
                 <div key={index} className="px-4 py-2">
-                  <div className="font-semibold">{item.name}</div>
-                  <div className="flex flex-col">
+                  <div className="font-bold">{item.name}</div>
+                  <div className="flex flex-col mt-1 font-medium">
                     {item.subItems.map((subItem, subIndex) => (
-                      <Link key={subIndex} href={`/${subItem.toLowerCase()}`}>
+                      <Link key={subIndex} href={`/products/${subItem.toLowerCase()}`}>
                         <p className="hover:text-blue-500">{subItem}</p>
                       </Link>
                     ))}
@@ -70,4 +70,4 @@ const Menu: React.FC = () => {
   );
 };
 
-export default Menu;
+export default MenuButton;

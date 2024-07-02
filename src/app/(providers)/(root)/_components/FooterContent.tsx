@@ -4,7 +4,7 @@ import React from 'react';
 import { IoMailOpenOutline } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 
-export default function FooterContent() {
+const FooterContent = () => {
   const myEmail = 'doroome246@gmail.com';
 
   const copyToClipboard = () => {
@@ -25,7 +25,7 @@ export default function FooterContent() {
   return (
     <div className="flex flex-col justify-center items-center p-2.5">
       <div>
-        <p className="font-bold text-xl p-1">Contact Us</p>
+        <p className="font-bold text-2xl p-1">Contact Us</p>
       </div>
       <div onClick={copyToClipboard} className="flex p-1 hover:cursor-pointer hover:bg-white hover:rounded-xl">
         <div className="p-1">
@@ -35,4 +35,6 @@ export default function FooterContent() {
       </div>
     </div>
   );
-}
+};
+
+export default FooterContent;
