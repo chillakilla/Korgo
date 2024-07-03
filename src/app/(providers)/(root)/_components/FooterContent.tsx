@@ -25,7 +25,7 @@ const FooterContent = () => {
   return (
     <div className="flex flex-col justify-center items-center p-2.5">
       <div>
-        <p className="font-bold text-2xl p-1">Contact Us</p>
+        <p className="font-bold text-3xl p-1">Contact Us</p>
       </div>
       <div onClick={copyToClipboard} className="flex p-1 hover:cursor-pointer hover:bg-white hover:rounded-xl">
         <div className="p-1">

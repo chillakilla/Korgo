@@ -20,6 +20,9 @@ const MenuBar: React.FC = () => {
       </div>
       {/* Auth container */}
       <div className="flex h-14 bg-main-color">
+        <div className="w-max flex items-center justify-center p-2 mr-4">
+          <CustomButton href={'/admin'}>Admin</CustomButton>
+        </div>
         <div className="flex items-center justify-center p-2">
           <CustomButton href={'/auth/login'}>Login</CustomButton>
         </div>

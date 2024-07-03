@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { SyncLoader } from 'react-spinners';
 import { useQuery } from '@tanstack/react-query';
 import { getMotors } from '@/app/api/supabase';
 import { Motor } from '@/app/types/Motor';
@@ -11,7 +12,7 @@ const MotorsPage = () => {
     isLoading,
     isError
   } = useQuery<Motor[]>({
-    queryKey: ['motor', 1],
+    queryKey: ['motors'],
     queryFn: getMotors
   });
 
@@ -19,7 +20,14 @@ const MotorsPage = () => {
   console.log('Is Error:', isError);
   console.log('Fetched Motors:', motors);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <SyncLoader color={'#0047A0'} loading={isLoading} size={25} />
+      </div>
+    );
+  }
+
   if (isError) return <p>Error loading motors</p>;
 
   if (!motors || motors.length === 0) {
@@ -27,15 +35,16 @@ const MotorsPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-slate-200">
       <h1 className="text-2xl font-bold mb-4">Motors List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {motors?.map((motor) => (
           <div key={motor.id} className="border p-4 rounded-lg">
-            <img src={motor.img} alt={motor.name} className="w-full h-auto" />
             <h2 className="text-xl font-bold mt-2">{motor.name}</h2>
             <p className="mt-1">Category: {motor.category}</p>
-            <Link href={`/motors/${motor.id}`}></Link>
+            <Link href={`/products/motors/${motor.id}`}>
+              <p>View Details</p>
+            </Link>
           </div>
         ))}
       </div>

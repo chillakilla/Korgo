@@ -3,9 +3,9 @@ import FooterContent from './FooterContent';
 
 const Footer = () => {
   return (
-    <div className="w-full h-[6rem] bg-slate-300">
+    <footer className="flex justify-center w-full h-32 bg-slate-300">
       <FooterContent />
-    </div>
+    </footer>
   );
 };
 
