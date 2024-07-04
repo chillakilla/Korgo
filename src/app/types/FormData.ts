@@ -1,8 +1,9 @@
-export interface MotorFormData {
+export interface FormData {
   name: string;
-  description: string;
   category: string;
   company_name: string;
+  description: string;
   tech_spec: string;
-  images: FileList | null; // for file upload
+  model_number: string;
+  image_urls: string[];
 }

@@ -24,7 +24,7 @@ export const getMotorById = async (id: string) => {
   return data;
 };
 
-//add
+//addMotor hook
 
 export const addMotor = async (newMotorData: FormData) => {
   try {
@@ -41,25 +41,44 @@ export const addMotor = async (newMotorData: FormData) => {
 
     if (error) {
       console.error('Supabase error:', error);
-      throw new Error(error.message);
+      throw new Error(error.message || 'Unknown error');
     }
 
+    console.log('Motor added successfully supabase API file console.log', data);
     return data;
-  } catch (err) {
-    console.error('Error in addMotor function:', err);
-    throw err;
+  } catch (error) {
+    console.error('Error in addMotor function', error);
+    throw new Error('Error in addMotor function');
   }
 };
 
-// upload image to storage /images/motors
+// uploadImages hook
 
-export const uploadImage = async (file: File) => {
-  const { data, error } = await supabase.storage.from('images').upload('motors', file);
-  if (error) {
-    throw new Error(error.message);
+export const uploadImages = async (files: File[]): Promise<string[]> => {
+  try {
+    const uploadPromises = files.map((file) => supabase.storage.from('images').upload(`motors/${file.name}`, file));
+
+    const results = await Promise.all(uploadPromises);
+
+    const imageUrls: string[] = [];
+    results.forEach(({ data, error }, index) => {
+      if (error) {
+        console.error(`Error uploading image ${files[index].name}:`, error);
+        throw new Error(error.message);
+      }
+      if (data) {
+        imageUrls.push(data.path);
+      }
+    });
+
+    return imageUrls;
+  } catch (error) {
+    console.error('Error uploading images:', error);
+    throw new Error('Error uploading images');
   }
-  return data;
 };
+
+// updateMotor hook
 
 export const updateMotor = async (id: string, updates: any) => {
   const { data: motor, error } = await supabase.from('motors').update(updates).eq('id', id);
