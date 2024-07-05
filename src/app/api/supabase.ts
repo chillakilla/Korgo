@@ -26,16 +26,14 @@ export const getMotorById = async (id: string) => {
 
 //addMotor hook
 
-export const addMotor = async (newMotorData: FormData) => {
+export const addMotor = async (newMotorData: FormData, files: File[]) => {
   try {
+    const imageUrls = await uploadImages(files);
+
     const { data, error } = await supabase.from('motors').insert([
       {
-        name: newMotorData.name,
-        category: newMotorData.category,
-        company_name: newMotorData.company_name,
-        description: newMotorData.description,
-        tech_spec: newMotorData.tech_spec,
-        model_number: newMotorData.model_number
+        ...newMotorData,
+        image_urls: imageUrls
       }
     ]);
 
@@ -44,7 +42,7 @@ export const addMotor = async (newMotorData: FormData) => {
       throw new Error(error.message || 'Unknown error');
     }
 
-    console.log('Motor added successfully supabase API file console.log', data);
+    console.log('Motor added successfully:', data);
     return data;
   } catch (error) {
     console.error('Error in addMotor function', error);
@@ -56,21 +54,24 @@ export const addMotor = async (newMotorData: FormData) => {
 
 export const uploadImages = async (files: File[]): Promise<string[]> => {
   try {
-    const uploadPromises = files.map((file) => supabase.storage.from('images').upload(`motors/${file.name}`, file));
-
-    const results = await Promise.all(uploadPromises);
-
-    const imageUrls: string[] = [];
-    results.forEach(({ data, error }, index) => {
-      if (error) {
-        console.error(`Error uploading image ${files[index].name}:`, error);
-        throw new Error(error.message);
-      }
-      if (data) {
-        imageUrls.push(data.path);
-      }
+    const uploadPromises = files.map((file) => {
+      const filePath = `motors/${file.name}`;
+      return supabase.storage
+        .from('images')
+        .upload(filePath, file)
+        .then(({ data, error }) => {
+          if (error) {
+            throw new Error(error.message);
+          }
+          if (data) {
+            const { publicUrl } = supabase.storage.from('images').getPublicUrl(filePath).data;
+            return publicUrl;
+          }
+          throw new Error('Upload failed');
+        });
     });
 
+    const imageUrls = await Promise.all(uploadPromises);
     return imageUrls;
   } catch (error) {
     console.error('Error uploading images:', error);

@@ -7,6 +7,7 @@ import CustomButton from './_button/CustomButton';
 const MenuBar: React.FC = () => {
   return (
     <div className="flex justify-between">
+      {/* Menu Container */}
       <div className="w-full h-14 bg-main-color flex">
         <div className="ml-4 p-2">
           <CustomButton href={'/'}>Home</CustomButton>

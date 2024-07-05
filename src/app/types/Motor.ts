@@ -6,5 +6,5 @@ export interface Motor {
   category: string;
   company_name: string;
   tech_spec: string;
-  images: string[]; // array of image URLs
+  image_urls: string[]; // array of image URLs
 }

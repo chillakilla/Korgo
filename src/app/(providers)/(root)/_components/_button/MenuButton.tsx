@@ -47,7 +47,7 @@ const MenuButton: React.FC = () => {
       {/* Dropdown menu Div Start */}
       <div onMouseEnter={handleSubMenuMouseEnter} onMouseLeave={handleSubMenuMouseLeave}>
         {showMenu && (
-          <div className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg">
+          <div className="absolute left-0 mt-2 w-48 bg-white border shadow-lg rounded-lg z-50">
             <div className="py-1">
               {menuItems.map((item, index) => (
                 <div key={index} className="px-4 py-2">
