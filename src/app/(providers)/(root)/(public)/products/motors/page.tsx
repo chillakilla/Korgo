@@ -43,8 +43,8 @@ const MotorsPage = () => {
             key={motor.id}
             className="bg-white border border-gray-200 rounded-lg shadow-md p-6 flex hover:shadow-lg transition-shadow duration-200"
           >
-            {motor.images && motor.images.length > 0 && (
-              <img src={motor.images[0]} alt={motor.name} className="w-24 h-24 object-cover rounded-lg mr-6" />
+            {motor.image_urls && motor.image_urls.length > 0 && (
+              <img src={motor.image_urls[0]} alt={motor.name} className="w-28 h-28 object-cover rounded-lg mr-6" />
             )}
             <div className="flex flex-col justify-between">
               <div>
@@ -55,7 +55,9 @@ const MotorsPage = () => {
                 <p className="text-gray-600">Tech Spec: {motor.tech_spec}</p>
               </div>
               <Link href={`/products/motors/${motor.id}`}>
-                <p className="text-blue-500 hover:underline">View Details</p>
+                <button className="px-4 py-2 bg-main-color text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-gray-300">
+                  View Details
+                </button>
               </Link>
             </div>
           </div>

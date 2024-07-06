@@ -68,9 +68,16 @@ const MotorDetailPage: NextPage = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="relative h-96">
-            <Carousel showArrows={true} showThumbs={false} infiniteLoop={true} dynamicHeight={true}>
+        <div className="flex flex-col gap-4">
+          <div className="relative">
+            <Carousel
+              centerMode={true}
+              centerSlidePercentage={100}
+              showArrows={true}
+              showThumbs={false}
+              infiniteLoop={true}
+              dynamicHeight={true}
+            >
               {motor.image_urls.map((url, index) => (
                 <div key={index} onClick={() => openLightbox(index)}>
                   <img
