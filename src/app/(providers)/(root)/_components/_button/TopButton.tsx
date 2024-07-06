@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@nextui-org/react';
 
-export default function TopButton() {
+const TopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
@@ -29,10 +29,12 @@ export default function TopButton() {
         onClick={scrollToTop}
         className={`${
           isVisible ? 'block' : 'hidden'
-        } fixed bottom-4 right-4 bg-main-color hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-all duration-300`}
+        } fixed bottom-20 right-10 bg-main-color hover:bg-blue-600 font-bold text-white px-4 py-2 rounded-md transition-all duration-300`}
       >
         Top
       </Button>
     </div>
   );
-}
+};
+
+export default TopButton;

@@ -4,6 +4,8 @@ type MainWrapperProps = {
   children: React.ReactNode;
 };
 
-export default function MainWrapper({ children }: MainWrapperProps) {
+const MainWrapper = ({ children }: MainWrapperProps) => {
   return <div>{children}</div>;
-}
+};
+
+export default MainWrapper;

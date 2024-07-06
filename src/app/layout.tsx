@@ -11,7 +11,7 @@ import MenuBar from './(providers)/(root)/_components/MenuBar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'KoPro',
+  title: 'Korgo',
   description: 'B2B platform'
 };
 
@@ -19,7 +19,7 @@ export type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -32,4 +32,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
