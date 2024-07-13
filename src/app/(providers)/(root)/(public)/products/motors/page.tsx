@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { SyncLoader } from 'react-spinners';
 import { useQuery } from '@tanstack/react-query';
-import { getMotors } from '@/app/api/supabase';
-import { Motor } from '@/app/types/Motor';
+import { getMotors } from '@/app/_api/supabase';
+import { Motor } from '@/app/_types/Motor';
 
 const MotorsPage = () => {
   const {
@@ -47,12 +47,19 @@ const MotorsPage = () => {
               <img src={motor.image_urls[0]} alt={motor.name} className="w-28 h-28 object-cover rounded-lg mr-6" />
             )}
             <div className="flex flex-col justify-between">
-              <div>
-                <h2 className="text-2xl font-semibold mb-2">{motor.name}</h2>
-                <p className="text-gray-700 mb-4">Category: {motor.category}</p>
-                <p className="text-gray-500 mb-4">{motor.description}</p>
-                <p className="text-gray-600 mb-2">Company: {motor.company_name}</p>
-                <p className="text-gray-600">Tech Spec: {motor.tech_spec}</p>
+              <div className="flex gap-4">
+                <div>
+                  <h2 className="text-2xl font-semibold mb-2">{motor.name}</h2>
+                </div>
+                <div>
+                  <p className="text-gray-700 mb-4">Category: {motor.category}</p>
+                </div>
+                <div>
+                  <p className="text-gray-500 mb-4">Description: {motor.description}</p>
+                </div>
+                <div>
+                  <p className="text-gray-600">Tech Spec: {motor.tech_spec}</p>
+                </div>
               </div>
               <Link href={`/products/motors/${motor.id}`}>
                 <button className="px-4 py-2 bg-main-color text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-gray-300">

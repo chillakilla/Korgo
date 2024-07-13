@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { getMotorById } from '@/app/_api/supabase';
-import { Motor } from '@/app/_types/Motor';
+import { getCoolerById } from '@/app/_api/supabase';
+import { Cooler } from '@/app/_types/Cooler';
 import CustomLightbox from '@/app/(providers)/(root)/_components/CustomLightbox';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const MotorDetailPage = () => {
+const CoolerDetailPage = () => {
   const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
@@ -17,18 +17,18 @@ const MotorDetailPage = () => {
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const router = useRouter();
 
-  console.log('motor id', id);
+  console.log('cooler id', id);
 
   const {
-    data: motor,
+    data: cooler,
     isLoading,
     isError
-  } = useQuery<Motor>({
-    queryKey: ['motor', id],
-    queryFn: () => getMotorById(id)
+  } = useQuery<Cooler>({
+    queryKey: ['cooler', id],
+    queryFn: () => getCoolerById(id)
   });
 
-  console.log('image_urls', motor?.image_urls);
+  console.log('image_urls', cooler?.image_urls);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -38,8 +38,8 @@ const MotorDetailPage = () => {
     return <p>Error</p>;
   }
 
-  if (!motor) {
-    return <p>No motor found</p>;
+  if (!cooler) {
+    return <p>No cooler found</p>;
   }
 
   const openLightbox = (index: number) => {
@@ -57,11 +57,11 @@ const MotorDetailPage = () => {
   };
 
   const showPrevImage = () => {
-    setPhotoIndex((prevIndex) => (prevIndex + motor.image_urls.length - 1) % motor.image_urls.length);
+    setPhotoIndex((prevIndex) => (prevIndex + cooler.image_urls.length - 1) % cooler.image_urls.length);
   };
 
   const showNextImage = () => {
-    setPhotoIndex((prevIndex) => (prevIndex + 1) % motor.image_urls.length);
+    setPhotoIndex((prevIndex) => (prevIndex + 1) % cooler.image_urls.length);
   };
 
   return (
@@ -77,11 +77,11 @@ const MotorDetailPage = () => {
               infiniteLoop={true}
               dynamicHeight={true}
             >
-              {motor.image_urls.map((url, index) => (
+              {cooler.image_urls.map((url, index) => (
                 <div key={index} onClick={() => openLightbox(index)}>
                   <img
                     src={url}
-                    alt={`Motor Image ${index + 1}`}
+                    alt={`Cooler Image ${index + 1}`}
                     className="w-full h-full object-cover cursor-pointer"
                   />
                 </div>
@@ -89,11 +89,11 @@ const MotorDetailPage = () => {
             </Carousel>
           </div>
           <div className="p-6">
-            <h1 className="text-3xl font-bold mb-2">{motor.name}</h1>
-            <p className="text-gray-600 mb-4">Category: {motor.category}</p>
+            <h1 className="text-3xl font-bold mb-2">{cooler.name}</h1>
+            <p className="text-gray-600 mb-4">Category: {cooler.category}</p>
             <div className="text-gray-800 mb-6">
               <h2 className="text-xl font-bold mb-2">Details</h2>
-              <p>{motor.description}</p> {/* Assuming 'description' is a field in your Motor type */}
+              <p>{cooler.description}</p> {/* Assuming 'description' is a field in your Cooler type */}
             </div>
             <button
               onClick={() => router.back()}
@@ -114,7 +114,7 @@ const MotorDetailPage = () => {
 
       {lightboxIsOpen && (
         <CustomLightbox
-          images={motor.image_urls}
+          images={cooler.image_urls}
           photoIndex={photoIndex}
           onClose={closeLightbox}
           onPrev={showPrevImage}
@@ -125,4 +125,4 @@ const MotorDetailPage = () => {
   );
 };
 
-export default MotorDetailPage;
+export default CoolerDetailPage;
