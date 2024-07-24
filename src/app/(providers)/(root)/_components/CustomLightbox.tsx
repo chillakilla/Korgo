@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 
 interface CustomLightboxProps {
@@ -25,7 +26,7 @@ const CustomLightbox: React.FC<CustomLightboxProps> = ({ images, photoIndex, onC
         >
           &lsaquo;
         </button>
-        <img src={images[photoIndex]} alt={`Lightbox Image ${photoIndex + 1}`} className="max-w-full max-h-screen" />
+        <Image src={images[photoIndex]} alt={`Lightbox Image ${photoIndex + 1}`} className="max-w-full max-h-screen" />
         <button
           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white text-6xl bg-black bg-opacity-50 rounded-xl p-2"
           onClick={onNext}
