@@ -83,6 +83,10 @@ const MotorDetailPage = () => {
                   <Image
                     src={url}
                     alt={`Motor Image ${index + 1}`}
+                    width={500}
+                    height={500}
+                    priority={false}
+                    sizes="width: auto, height: auto"
                     className="w-full h-full object-cover cursor-pointer"
                   />
                 </div>
