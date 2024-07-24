@@ -1,5 +1,5 @@
 import { supabase } from '../supabaseClient';
-import { FormData } from '../types/FormData';
+import { FormData } from '../_types/FormData';
 
 // supabase CRUD Operations
 
