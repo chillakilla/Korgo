@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FormData } from '@/app/types/FormData';
+import { FormData } from '@/app/_types/FormData';
 
 interface AddMotorFormProps {
-  // onImageUpload: (file: File[]) => Promise<string[]>;
   onSubmit: (formData: FormData, files: File[]) => void;
 }
 
@@ -21,7 +20,7 @@ const AddMotorForm: React.FC<AddMotorFormProps> = ({ onSubmit }) => {
 
   const [files, setFiles] = useState<File[]>([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -34,17 +33,6 @@ const AddMotorForm: React.FC<AddMotorFormProps> = ({ onSubmit }) => {
       setFiles(Array.from(e.target.files));
     }
   };
-
-  // const handleImageUpload = async () => {
-  //   if (files.length > 0) {
-  //     const imageUrls = await onImageUpload(files);
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       image_urls: imageUrls
-  //     }));
-  //     setFiles([]);
-  //   }
-  // };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -87,17 +75,19 @@ const AddMotorForm: React.FC<AddMotorFormProps> = ({ onSubmit }) => {
             <label htmlFor="category" className="block text-m font-bold text-gray-700 ">
               Category
             </label>
-            <input
-              type="text"
+            <select
               id="category"
               name="category"
               value={formData.category}
               onChange={handleChange}
               className="input-field border-1 p-1"
               style={{ width: '100%' }}
-              placeholder="Enter category"
               required
-            />
+            >
+              <option value="">Select category</option>
+              <option value="motor">Motor</option>
+              <option value="cooler">Cooler</option>
+            </select>
           </div>
           {/* Company Name div */}
           <div>

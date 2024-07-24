@@ -3,11 +3,15 @@
 import React from 'react';
 import MenuButton from './_button/MenuButton';
 import CustomButton from './_button/CustomButton';
+import LogOutButton from './_button/LogOutButton';
+import { useAuth } from '@/app/_context/AuthContext';
 
 const MenuBar: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <div className="flex justify-between">
-      {/* Menu Container */}
+      {/* Menu Container start*/}
       <div className="w-full h-14 bg-main-color flex">
         <div className="ml-4 p-2">
           <CustomButton href={'/'}>Home</CustomButton>
@@ -16,21 +20,36 @@ const MenuBar: React.FC = () => {
           <MenuButton />
         </div>
         <div className="flex items-center justify-center p-2">
+          <CustomButton href={'/news'}>News</CustomButton>
+        </div>
+        <div className="flex items-center justify-center p-2">
           <CustomButton href={'/about'}>About</CustomButton>
         </div>
       </div>
-      {/* Auth container */}
+      {/* Menu Container end*/}
+      {/* Auth container start*/}
       <div className="flex h-14 bg-main-color">
-        <div className="w-max flex items-center justify-center p-2 mr-4">
-          <CustomButton href={'/admin'}>Admin</CustomButton>
-        </div>
-        <div className="flex items-center justify-center p-2">
-          <CustomButton href={'/auth/login'}>Login</CustomButton>
-        </div>
-        <div className="w-max flex items-center justify-center p-2 mr-4">
-          <CustomButton href={'/auth/signup'}>Sign Up</CustomButton>
-        </div>
+        {user ? (
+          <>
+            <div className="w-max flex items-center justify-center p-2">
+              <CustomButton href={'/admin'}>Admin</CustomButton>
+            </div>
+            <div className="flex items-center justify-center p-2">
+              <LogOutButton />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center justify-center p-2">
+              <CustomButton href={'/auth/login'}>Login</CustomButton>
+            </div>
+            <div className="flex items-center justify-center p-2 mr-4">
+              <CustomButton href={'/auth/signup'}>Sign Up</CustomButton>
+            </div>
+          </>
+        )}
       </div>
+      {/* Auth container end*/}
     </div>
   );
 };

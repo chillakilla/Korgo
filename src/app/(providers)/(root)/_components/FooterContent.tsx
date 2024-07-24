@@ -5,7 +5,7 @@ import { IoMailOpenOutline } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 
 const FooterContent = () => {
-  const myEmail = 'doroome246@gmail.com';
+  const myEmail = 'korgolab92@gmail.com';
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(myEmail).then(
