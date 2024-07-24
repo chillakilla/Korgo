@@ -5,6 +5,7 @@ import { SyncLoader } from 'react-spinners';
 import { useQuery } from '@tanstack/react-query';
 import { getMotors } from '@/app/_api/supabase';
 import { Motor } from '@/app/_types/Motor';
+import Image from 'next/image';
 
 const MotorsPage = () => {
   const {
@@ -44,7 +45,7 @@ const MotorsPage = () => {
             className="bg-white border border-gray-200 rounded-lg shadow-md p-6 flex hover:shadow-lg transition-shadow duration-200"
           >
             {motor.image_urls && motor.image_urls.length > 0 && (
-              <img src={motor.image_urls[0]} alt={motor.name} className="w-28 h-28 object-cover rounded-lg mr-6" />
+              <Image src={motor.image_urls[0]} alt={motor.name} className="w-28 h-28 object-cover rounded-lg mr-6" />
             )}
             <div className="flex flex-col justify-between">
               <div className="flex gap-4">

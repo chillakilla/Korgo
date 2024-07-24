@@ -8,6 +8,7 @@ import { Cooler } from '@/app/_types/Cooler';
 import CustomLightbox from '@/app/(providers)/(root)/_components/CustomLightbox';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Image from 'next/image';
 
 const CoolerDetailPage = () => {
   const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
@@ -79,7 +80,7 @@ const CoolerDetailPage = () => {
             >
               {cooler.image_urls.map((url, index) => (
                 <div key={index} onClick={() => openLightbox(index)}>
-                  <img
+                  <Image
                     src={url}
                     alt={`Cooler Image ${index + 1}`}
                     className="w-full h-full object-cover cursor-pointer"
