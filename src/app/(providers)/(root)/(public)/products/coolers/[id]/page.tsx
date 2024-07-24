@@ -83,6 +83,9 @@ const CoolerDetailPage = () => {
                   <Image
                     src={url}
                     alt={`Cooler Image ${index + 1}`}
+                    width={500}
+                    height={500}
+                    sizes="width: auto, height: auto"
                     className="w-full h-full object-cover cursor-pointer"
                   />
                 </div>

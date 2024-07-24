@@ -45,7 +45,14 @@ const CoolersPage = () => {
             className="bg-white border border-gray-200 rounded-lg shadow-md p-6 flex hover:shadow-lg transition-shadow duration-200"
           >
             {cooler.image_urls && cooler.image_urls.length > 0 && (
-              <Image src={cooler.image_urls[0]} alt={cooler.name} className="w-28 h-28 object-cover rounded-lg mr-6" />
+              <Image
+                src={cooler.image_urls[0]}
+                alt={cooler.name}
+                width={500}
+                height={500}
+                sizes="width: auto, height: auto"
+                className="w-28 h-28 object-cover rounded-lg mr-6"
+              />
             )}
             <div className="flex flex-col justify-between">
               <div className="flex gap-4">
