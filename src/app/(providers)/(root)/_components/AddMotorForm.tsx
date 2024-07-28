@@ -163,13 +163,6 @@ const AddMotorForm: React.FC<AddMotorFormProps> = ({ onSubmit }) => {
               Images
             </label>
             <input type="file" id="images" name="images" onChange={handleFileChange} className="input-field" multiple />
-            {/* <button
-              type="button"
-              onClick={handleImageUpload}
-              className="btn bg-main-color text-white font-bold mt-5 py-2 px-4 rounded-lg hover:bg-blue-600"
-            >
-              Upload Images
-            </button> */}
             {formData.image_urls.length > 0 && <p className="text-green-500 mt-2">Images uploaded successfully.</p>}
           </div>
           <button

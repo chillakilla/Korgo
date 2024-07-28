@@ -83,7 +83,7 @@ export const uploadImages = async (files: File[]): Promise<string[]> => {
 
 // updateMotor HOOK
 
-export const updateMotor = async (id: string, updates: any) => {
+export const updateMotorById = async (id: string, updates: any) => {
   const { data: motor, error } = await supabase.from('motors').update(updates).eq('id', id);
   if (error) {
     throw new Error(error.message);
