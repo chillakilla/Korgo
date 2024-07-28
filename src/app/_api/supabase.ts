@@ -83,12 +83,21 @@ export const uploadImages = async (files: File[]): Promise<string[]> => {
 
 // updateMotor HOOK
 
-export const updateMotorById = async (id: string, updates: any) => {
-  const { data: motor, error } = await supabase.from('motors').update(updates).eq('id', id);
-  if (error) {
-    throw new Error(error.message);
-  }
-  return motor;
+export const updateMotorById = async (id: string, formData: FormData, files: File[]) => {
+  // Upload files and get their URLs (implement file upload logic)
+  const imageUrls = await uploadImages(files);
+
+  const { data, error } = await supabase
+    .from('motors')
+    .update({
+      ...formData,
+      image_urls: imageUrls.length ? imageUrls : formData.image_urls
+    })
+    .eq('id', id);
+
+  if (error) throw new Error(error.message);
+
+  return data;
 };
 
 // deleteMotor HOOK

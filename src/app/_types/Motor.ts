@@ -1,4 +1,5 @@
 export interface Motor {
+  model_number: string;
   id: string; // uuid
   name: string;
   description: string;
