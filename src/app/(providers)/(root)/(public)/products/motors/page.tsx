@@ -60,13 +60,12 @@ const MotorsPage = () => {
                   <h2 className="text-2xl font-semibold mb-2">{motor.name}</h2>
                 </div>
                 <div>
-                  <p className="text-gray-700 mb-4">Category: {motor.category}</p>
+                  <p className="font-semibold">Category</p>
+                  <p className="text-gray-700 mb-4">{motor.category}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 mb-4">Description: {motor.description}</p>
-                </div>
-                <div>
-                  <p className="text-gray-600">Tech Spec: {motor.tech_spec}</p>
+                  <p className="font-semibold">Description</p>
+                  <p className="text-gray-500 mb-4 line-clamp-2 overflow-hidden text-ellipsis">{motor.description}</p>
                 </div>
               </div>
               <Link href={`/products/motors/${motor.id}`}>
